@@ -35,5 +35,7 @@ class Solution {
         left.val=right.val;
         right.val=swap;
         return head;
+        //TC- O(n)
+        //SC- O(1)
     }
 }
