@@ -8,30 +8,25 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
-        ListNode temp=head,slow=null,fast=null;
-        int len=0,count=0;
+        //We can use an ArrayList to record all the nodes of the linked list. We can just swap the values of two nodes.
+        ListNode temp=head;
+        List<ListNode> ll=new ArrayList();
         while(temp!=null)
         {
-           len++;
-           temp=temp.next;      
-        }
-        temp=head;
-        while(temp!=null)
-        {
-            if(count==k-1)
-                slow=temp;
-            if(count== len-k)
-                fast=temp;
-            count++;
+            ll.add(temp);//adding all the nodes in arraylist.
             temp=temp.next;
         }
-        int swap=slow.val;
-        slow.val=fast.val;
-        fast.val=swap;
+        //fetching nodes from arraylist and swapping the values
+        int len=ll.size();
+        int swap=ll.get(k-1).val;
+        ll.get(k-1).val=ll.get(len-k).val;
+        ll.get(len-k).val=swap;
         return head;
         
-        
+        //TC: O(n)
+        //SC:O(n)- due to  arraylist
     }
 }
