@@ -13,20 +13,10 @@
  *     }
  * }
  */
-//Using inorder traversal
 class Solution {
-    int sum=0;
-    public int rangeSumBST(TreeNode root, int low, int high) { 
-        inorder(root,low,high);
-        return sum;
-    }
-    public void inorder(TreeNode root, int low, int high)
-    {
+    public int rangeSumBST(TreeNode root, int low, int high) {
         if(root==null)
-            return;
-        inorder(root.left,low,high);
-        if(root.val<=high && root.val>=low)
-            sum+=root.val;
-        inorder(root.right,low,high);
+            return 0;
+        return ((root.val<=high && root.val>=low ) ? root.val : 0) + rangeSumBST(root.left,low,high) + rangeSumBST(root.right,low,high);
     }
 }
