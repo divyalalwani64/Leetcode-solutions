@@ -32,8 +32,11 @@ class Solution {
             return trimBST(root.right,low,high);
         else if(root.val>high)
             return trimBST(root.left,low,high);
+        //else part
         root.left=trimBST(root.left,low,high);
         root.right=trimBST(root.right,low,high);
         return root;
     }
 }
+//TC: O(N)
+//SC: O(N)
