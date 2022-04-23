@@ -14,10 +14,11 @@
  * }
  */
 class Solution {
+    //Iterative - approach
     public TreeNode searchBST(TreeNode root, int val) {
-        if(root==null || root.val==val)
-            return root;
-        return (val>root.val) ? searchBST(root.right,val): searchBST(root.left,val);
-        
+        if(root==null) return root;
+        while(root!=null && root.val!=val)
+            root= val>root.val ? root.right : root.left;
+        return root;
     }
 }
