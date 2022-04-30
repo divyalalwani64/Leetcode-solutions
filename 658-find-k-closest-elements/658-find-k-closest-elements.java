@@ -1,35 +1,23 @@
 class Solution {
+    //Binary Search
     
-  private class Node{
-      private int index;
-      private int diff;
-      Node(int index, int diff){
-          this.index=index;
-          this.diff=diff;
-      }
-  }
      public List<Integer> findClosestElements(int[] arr, int k, int x) {
          List<Integer> closest = new ArrayList();
-         PriorityQueue<Node> maxHeap= new PriorityQueue<>( (a,b) -> (b.diff==a.diff) ? (b.index - a.index) : (b.diff - a.diff));
-         
-         for(int i=0;i<arr.length;i++)
-         {
-             maxHeap.offer(new Node(i, Math.abs(arr[i]-x)));
-             if(maxHeap.size()>k)
-                 maxHeap.poll();
+         int low=0, high=arr.length-1;
+         while(high-low >= k){ // This will run (N-k) times
+             if(Math.abs(arr[low]-x) > Math.abs(arr[high]-x))
+                 low++;
+             else
+                 high--; 
          }
          
-         while(!maxHeap.isEmpty())
-             closest.add(arr[maxHeap.poll().index]);
-         
-         Collections.sort(closest);
+         for(int i=low;i<=high;i++)
+             closest.add(arr[i]);
          
          return closest;
      }
+    
+    //TC: O(N-k) times
+    //SC: O(N)
 }
-
-
-// will take min heap as elements sorted order
-//element insert
-//size is greater than 
 
