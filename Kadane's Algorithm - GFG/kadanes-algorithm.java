@@ -37,15 +37,13 @@ class Solution{
         
         // Your code here
         int max=Integer.MIN_VALUE;
+        int sum=0;
         for(int i=0;i<n;i++)
         {
-            int sum=arr[i];
-            for(int j=i+1;j<n;j++)
-            {
-               max=Math.max(max,sum);
-               sum+= arr[j];
-            }
+             sum+=arr[i];
              max=Math.max(max,sum);
+             if(sum<0)
+              sum=0;
         }
         return max;
     }
